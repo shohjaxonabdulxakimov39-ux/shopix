@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHOPIX — Hammasi bir joyda. Xarid qilish oson.</title>
+  <meta name="description" content="O'zbekistondagi eng zamonaviy online marketplace. Telefonlar, maishiy texnika, kiyim-kechak va minglab boshqa mahsulotlar tez yetkazib berish bilan.">
+  
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%236366F1'/><stop offset='100%' stop-color='%238B5CF6'/></linearGradient></defs><rect width='100' height='100' rx='24' fill='url(%23g)'/><path d='M30 35 L30 70 A15 15 0 0 0 70 70 L70 35 Z' fill='none' stroke='white' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/><path d='M40 35 V28 A10 10 0 0 1 60 28 V35' fill='none' stroke='white' stroke-width='7' stroke-linecap='round'/><circle cx='50' cy='52' r='6' fill='%23FF4757'/></svg>">
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ================= PRELOADER ================= -->
+  <div id="preloader" class="preloader">
+    <div class="preloader-content">
+      <div class="brand-spinner">
+        <div class="spinner-ring"></div>
+        <div class="brand-logo-icon">
+          <i class="fa-solid fa-bag-shopping"></i>
+        </div>
+      </div>
+      <div class="preloader-brand">SHOPIX</div>
+      <div class="preloader-slogan">Hammasi bir joyda. Xarid qilish oson.</div>
+    </div>
+  </div>
+
+  <!-- ================= TOP NOTIFICATION / PROMO BAR ================= -->
+  <div class="top-bar">
+    <div class="container top-bar-container">
+      <div class="top-bar-left">
+        <button class="location-btn" id="locationBtn" aria-label="Yetkazib berish shahri">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>Shahar: <strong id="currentCityText">Toshkent</strong></span>
+          <i class="fa-solid fa-chevron-down arrow-mini"></i>
+        </button>
+        <span class="delivery-time-tag">
+          <i class="fa-solid fa-truck-fast"></i> 1 kunda bepul yetkazib berish
+        </span>
+      </div>
+      
+      <div class="top-bar-right">
+        <a href="#faq" class="top-link"><i class="fa-regular fa-circle-question"></i> Savol-javoblar</a>
+        <a href="#delivery" class="top-link"><i class="fa-solid fa-shield-halved"></i> Kafolat</a>
+        <a href="tel:+998712000000" class="top-link phone-link"><i class="fa-solid fa-phone"></i> +998 71 200-00-00</a>
+        
+        <!-- Dark Mode Toggle Desktop -->
+        <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Mavzuni almashtirish" title="Mavzuni almashtirish">
+          <i class="fa-solid fa-moon moon-icon"></i>
+          <i class="fa-solid fa-sun sun-icon"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MAIN HEADER ================= -->
+  <header class="main-header" id="mainHeader">
+    <div class="container header-container">
+      
+      <!-- LOGO -->
+      <a href="#" class="brand-logo" aria-label="SHOPIX Bosh sahifa">
+        <div class="logo-symbol">
+          <svg viewBox="0 0 42 42" width="38" height="38" fill="none">
+            <rect width="42" height="42" rx="12" fill="url(#logoGrad)" />
+            <path d="M13 16 L13 30 A8 8 0 0 0 29 30 L29 16 Z" stroke="#FFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M17 16 V13 A4 4 0 0 1 25 13 V16" stroke="#FFF" stroke-width="2.8" stroke-linecap="round"/>
+            <circle cx="21" cy="22" r="2.5" fill="#FF4757" />
+            <defs>
+              <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#4F46E5" />
+                <stop offset="100%" stop-color="#8B5CF6" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="logo-text-group">
+          <span class="logo-name">SHOPIX</span>
+          <span class="logo-slogan">MARKETPLACE</span>
+        </div>
+      </a>
+
+      <!-- CATALOG BUTTON -->
+      <button class="catalog-trigger-btn" id="catalogBtn" aria-label="Mahsulotlar katalogi">
+        <div class="catalog-icon-wrap">
+          <span class="bar bar-1"></span>
+          <span class="bar bar-2"></span>
+          <span class="bar bar-3"></span>
+        </div>
+        <span>Katalog</span>
+      </button>
+
+      <!-- SEARCH BAR -->
+      <div class="header-search-wrapper" id="searchWrapper">
+        <form class="search-form" id="searchForm" onsubmit="event.preventDefault();">
+          <i class="fa-solid fa-magnifying-glass search-main-icon"></i>
+          <input 
+            type="text" 
+            id="searchInput" 
+            class="search-input" 
+            placeholder="Mahsulot yoki kategoriya qidiring..." 
+            autocomplete="off"
+            aria-label="Mahsulot qidirish"
+          >
+          <button type="button" class="search-clear-btn" id="searchClearBtn" aria-label="Qidiruvni tozalash" style="display: none;">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+          <button type="submit" class="search-submit-btn" aria-label="Qidirish">
+            Topish
+          </button>
+        </form>
+
+        <!-- Search Suggestions Dropdown -->
+        <div class="search-suggestions-dropdown" id="searchSuggestions" style="display: none;">
+          <div class="search-suggestions-header">
+            <span>Ommabop qidiruvlar</span>
+          </div>
+          <div class="quick-tags" id="popularTags">
+            <button class="quick-tag" data-search="Samsung Galaxy S25">Samsung Galaxy S25</button>
+            <button class="quick-tag" data-search="iPhone 16 Pro">iPhone 16 Pro</button>
+            <button class="quick-tag" data-search="Nike Air">Nike Air</button>
+            <button class="quick-tag" data-search="Sony Quloqchin">Sony Quloqchin</button>
+            <button class="quick-tag" data-search="MacBook">MacBook</button>
+          </div>
+          <div class="search-results-preview" id="searchResultsPreview">
+            <!-- Dynamic search matches -->
+          </div>
+        </div>
+      </div>
+
+      <!-- HEADER ACTIONS -->
+      <div class="header-actions">
+        <!-- Auth / User Button -->
+        <button class="action-btn auth-action-btn" id="authBtn" aria-label="Foydalanuvchi hisobi">
+          <div class="action-icon-box">
+            <i class="fa-regular fa-user" id="userIcon"></i>
+          </div>
+          <span class="action-label" id="userLabel">Kirish</span>
+        </button>
+
+        <!-- Wishlist Button -->
+        <button class="action-btn wishlist-action-btn" id="wishlistBtn" aria-label="Sevimlilar ro'yxati">
+          <div class="action-icon-box">
+            <i class="fa-regular fa-heart"></i>
+            <span class="action-badge" id="wishlistBadge">0</span>
+          </div>
+          <span class="action-label">Sevimlilar</span>
+        </button>
+
+        <!-- Cart Button -->
+        <button class="action-btn cart-action-btn" id="cartBtn" aria-label="Savat">
+          <div class="action-icon-box">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="action-badge cart-badge-pulse" id="cartBadge">0</span>
+          </div>
+          <div class="cart-label-group">
+            <span class="action-label">Savat</span>
+            <span class="cart-preview-total" id="cartHeaderTotal">0 so'm</span>
+          </div>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ================= CATEGORY SUB-NAVIGATION ================= -->
+  <nav class="categories-nav" id="categoriesNav" aria-label="Asosiy kategoriyalar">
+    <div class="container nav-container">
+      <ul class="nav-list" id="navCategoryList">
+        <li class="nav-item">
+          <button class="nav-link active" data-category="all">
+            <i class="fa-solid fa-shapes"></i> Barcha mahsulotlar
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-category="electronics">
+            <i class="fa-solid fa-bolt"></i> Elektronika
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-category="phones">
+            <i class="fa-solid fa-mobile-screen-button"></i> Telefonlar
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-category="laptops">
+            <i class="fa-solid fa-laptop"></i> Kompyuterlar
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-category="clothing">
+            <i class="fa-solid fa-shirt"></i> Kiyim-kechak
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-category="shoes">
+            <i class="fa-solid fa-shoe-prints"></i> Poyabzal
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-category="home">
+            <i class="fa-solid fa-couch"></i> Uy uchun
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-category="appliances">
+            <i class="fa-solid fa-blender"></i> Maishiy texnika
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-category="beauty">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Go‘zallik
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-category="sport">
+            <i class="fa-solid fa-dumbbell"></i> Sport
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-category="gaming">
+            <i class="fa-solid fa-gamepad"></i> Gaming
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link nav-link-more" id="navMoreBtn">
+            Yana <i class="fa-solid fa-chevron-down"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main id="mainContent">
+
+    <!-- ================= HERO SLIDER SECTION ================= -->
+    <section class="hero-section" id="heroSection">
+      <div class="container hero-container">
+        
+        <div class="hero-slider" id="heroSlider">
+          <!-- Slide 1 -->
+          <div class="hero-slide active" style="--gradient: linear-gradient(135deg, #4338ca 0%, #6366f1 50%, #8b5cf6 100%);">
+            <div class="slide-content">
+              <span class="slide-badge"><i class="fa-solid fa-fire"></i> Maxsus taklif</span>
+              <h1 class="slide-title">Katta chegirmalar haftaligi!</h1>
+              <p class="slide-subtitle">Eng yaxshi mahsulotlar — eng yaxshi narxlarda. Tanlangan brendlarga 50% gacha chegirma.</p>
+              <div class="slide-buttons">
+                <a href="#flashSale" class="btn btn-primary btn-glow">
+                  <i class="fa-solid fa-bag-shopping"></i> Xarid qilish
+                </a>
+                <button class="btn btn-secondary catalog-open-trigger">
+                  <i class="fa-solid fa-list-ul"></i> Kategoriyalar
+                </button>
+              </div>
+            </div>
+            <div class="slide-visual">
+              <div class="hero-product-showcase">
+                <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=700&auto=format&fit=crop&q=80" alt="Flagship Smartphones" class="hero-img floating-anim">
+                <div class="floating-badge badge-top">
+                  <span class="fb-icon"><i class="fa-solid fa-percent"></i></span>
+                  <div>
+                    <strong>-35% chegirma</strong>
+                    <small>Samsung & Apple</small>
+                  </div>
+                </div>
+                <div class="floating-badge badge-bottom">
+                  <span class="fb-icon"><i class="fa-solid fa-truck-fast"></i></span>
+                  <div>
+                    <strong>1 kunda bepul</strong>
+                    <small>O'zbekiston bo'ylab</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="hero-slide" style="--gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #3b82f6 100%);">
+            <div class="slide-content">
+              <span class="slide-badge badge-cyan"><i class="fa-solid fa-laptop"></i> Yangi avlod texnikasi</span>
+              <h2 class="slide-title">Ish va o‘yin uchun kuchli noutbuklar</h2>
+              <p class="slide-subtitle">Apple M3, Intel Core Ultra va RTX 40 seriyali zamonaviy noutbuklar kafolat bilan.</p>
+              <div class="slide-buttons">
+                <button class="btn btn-primary btn-glow filter-btn-trigger" data-filter-cat="laptops">
+                  <i class="fa-solid fa-laptop"></i> Ko'rish
+                </button>
+                <button class="btn btn-secondary catalog-open-trigger">
+                  Barcha modellar
+                </button>
+              </div>
+            </div>
+            <div class="slide-visual">
+              <div class="hero-product-showcase">
+                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=700&auto=format&fit=crop&q=80" alt="MacBook Pro" class="hero-img floating-anim">
+                <div class="floating-badge badge-top">
+                  <span class="fb-icon"><i class="fa-solid fa-shield-check"></i></span>
+                  <div>
+                    <strong>2 Yillik Kafolat</strong>
+                    <small>100% Original</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="hero-slide" style="--gradient: linear-gradient(135deg, #831843 0%, #be185d 50%, #f43f5e 100%);">
+            <div class="slide-content">
+              <span class="slide-badge badge-pink"><i class="fa-solid fa-sparkles"></i> Yangi mavsum kolleksiyasi</span>
+              <h2 class="slide-title">Nike & Adidas original sport kiyimlari</h2>
+              <p class="slide-subtitle">Trendy poyabzallar, zamonaviy krossovkalar va qulay sport kiyimlari siz uchun.</p>
+              <div class="slide-buttons">
+                <button class="btn btn-primary btn-glow filter-btn-trigger" data-filter-cat="shoes">
+                  <i class="fa-solid fa-shoe-prints"></i> Tanlash
+                </button>
+                <button class="btn btn-secondary catalog-open-trigger">
+                  Kolleksiya
+                </button>
+              </div>
+            </div>
+            <div class="slide-visual">
+              <div class="hero-product-showcase">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700&auto=format&fit=crop&q=80" alt="Sneakers Nike" class="hero-img floating-anim">
+                <div class="floating-badge badge-bottom">
+                  <span class="fb-icon"><i class="fa-solid fa-award"></i></span>
+                  <div>
+                    <strong>Top Reyting</strong>
+                    <small>4.9 / 5.0 (800+ sharh)</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <button class="slider-btn prev-btn" id="sliderPrevBtn" aria-label="Oldingi banner">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="slider-btn next-btn" id="sliderNextBtn" aria-label="Keyingi banner">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+
+          <!-- Dots Indicator -->
+          <div class="slider-dots" id="sliderDots">
+            <button class="dot active" data-index="0" aria-label="1-slayd"></button>
+            <button class="dot" data-index="1" aria-label="2-slayd"></button>
+            <button class="dot" data-index="2" aria-label="3-slayd"></button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= VALUE PROPOSITION / FEATURES SECTION ================= -->
+    <section class="features-section" id="delivery">
+      <div class="container">
+        <div class="features-grid">
+          
+          <div class="feature-card">
+            <div class="feature-icon feature-icon-purple">
+              <i class="fa-solid fa-truck-fast"></i>
+            </div>
+            <div class="feature-text">
+              <h3 class="feature-title">Tez yetkazib berish</h3>
+              <p class="feature-desc">Toshkent bo‘ylab 1 kunda, butun O‘zbekiston bo‘ylab 2-3 kunda bepul yetkazamiz.</p>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon feature-icon-green">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div class="feature-text">
+              <h3 class="feature-title">Xavfsiz xarid</h3>
+              <p class="feature-desc">100% rasmiy mahsulotlar va 14 kun ichida oson qaytarish kafolati.</p>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon feature-icon-blue">
+              <i class="fa-solid fa-credit-card"></i>
+            </div>
+            <div class="feature-text">
+              <h3 class="feature-title">Qulay to‘lov</h3>
+              <p class="feature-desc">Muddatli to‘lov (nasiya), Uzcard, Humo, Visa yoki qabul qilganda naqd to‘lash.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= POPULAR CATEGORY CARDS ================= -->
+    <section class="popular-categories-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <span class="section-subtitle">Katalog</span>
+            <h2 class="section-title">Ommabop kategoriyalar</h2>
+          </div>
+          <button class="btn-link catalog-open-trigger">
+            Barcha kategoriyalar <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <div class="category-cards-grid" id="categoryCardsGrid">
+          <!-- Card 1 -->
+          <div class="category-card" data-category="phones">
+            <div class="cat-card-icon">📱</div>
+            <h3 class="cat-card-title">Telefonlar</h3>
+            <span class="cat-card-count">1 420+ mahsulot</span>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="category-card" data-category="laptops">
+            <div class="cat-card-icon">💻</div>
+            <h3 class="cat-card-title">Noutbuklar</h3>
+            <span class="cat-card-count">580+ mahsulot</span>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="category-card" data-category="audio">
+            <div class="cat-card-icon">🎧</div>
+            <h3 class="cat-card-title">Quloqchinlar</h3>
+            <span class="cat-card-count">840+ mahsulot</span>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="category-card" data-category="clothing">
+            <div class="cat-card-icon">👕</div>
+            <h3 class="cat-card-title">Kiyimlar</h3>
+            <span class="cat-card-count">3 200+ mahsulot</span>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="category-card" data-category="shoes">
+            <div class="cat-card-icon">👟</div>
+            <h3 class="cat-card-title">Poyabzal</h3>
+            <span class="cat-card-count">1 150+ mahsulot</span>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="category-card" data-category="home">
+            <div class="cat-card-icon">🏠</div>
+            <h3 class="cat-card-title">Uy jihozlari</h3>
+            <span class="cat-card-count">2 400+ mahsulot</span>
+          </div>
+
+          <!-- Card 7 -->
+          <div class="category-card" data-category="accessories">
+            <div class="cat-card-icon">⌚</div>
+            <h3 class="cat-card-title">Aksessuarlar</h3>
+            <span class="cat-card-count">920+ mahsulot</span>
+          </div>
+
+          <!-- Card 8 -->
+          <div class="category-card" data-category="gaming">
+            <div class="cat-card-icon">🎮</div>
+            <h3 class="cat-card-title">Gaming</h3>
+            <span class="cat-card-count">410+ mahsulot</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= FLASH SALE SECTION ================= -->
+    <section class="flash-sale-section" id="flashSale">
+      <div class="container">
+        
+        <div class="flash-sale-banner">
+          <div class="flash-sale-header">
+            <div class="flash-title-wrap">
+              <span class="flash-badge"><i class="fa-solid fa-bolt"></i> Cheklangan vaqt</span>
+              <h2 class="flash-title">Bugungi chegirmalar</h2>
+              <p class="flash-desc">Kunning eng qaynoq takliflari va katta chegirmalari</p>
+            </div>
+
+            <!-- Countdown Timer -->
+            <div class="countdown-wrapper">
+              <div class="countdown-label">Tugashiga qoldi:</div>
+              <div class="countdown-timer" id="countdownTimer">
+                <div class="timer-box">
+                  <span class="timer-num" id="timerHours">01</span>
+                  <span class="timer-text">Soat</span>
+                </div>
+                <span class="timer-sep">:</span>
+                <div class="timer-box">
+                  <span class="timer-num" id="timerMinutes">24</span>
+                  <span class="timer-text">Daqiqa</span>
+                </div>
+                <span class="timer-sep">:</span>
+                <div class="timer-box">
+                  <span class="timer-num" id="timerSeconds">35</span>
+                  <span class="timer-text">Soniya</span>
+                </div>
+                <span class="timer-sep">:</span>
+                <div class="timer-box timer-ms-box">
+                  <span class="timer-num" id="timerMillis">12</span>
+                  <span class="timer-text">Ms</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Flash Sale Products Horizontal Scroll / Grid -->
+          <div class="flash-products-grid" id="flashProductsGrid">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= MAIN PRODUCTS & FILTERS CATALOG SECTION ================= -->
+    <section class="catalog-section" id="productsCatalog">
+      <div class="container">
+        
+        <!-- Controls Bar: Results count, Mobile Filter toggle, Sort -->
+        <div class="catalog-controls-bar">
+          <div class="results-info">
+            <h2 class="catalog-main-title" id="catalogHeading">Barcha mahsulotlar</h2>
+            <span class="results-count" id="resultsCount">24 ta mahsulot topildi</span>
+          </div>
+
+          <div class="controls-actions">
+            <!-- Mobile Filter Trigger -->
+            <button class="mobile-filter-btn" id="mobileFilterToggleBtn">
+              <i class="fa-solid fa-sliders"></i>
+              <span>Filtrlar</span>
+              <span class="filter-active-dot" id="filterActiveDot" style="display: none;"></span>
+            </button>
+
+            <!-- Sorting Select -->
+            <div class="sort-wrapper">
+              <label for="sortSelect" class="sort-label">Saralash:</label>
+              <div class="select-styled">
+                <select id="sortSelect" class="sort-select" aria-label="Mahsulotlarni saralash">
+                  <option value="popular">Mashhurligi bo‘yicha</option>
+                  <option value="price-asc">Arzonidan qimmatiga</option>
+                  <option value="price-desc">Qimmatidan arzoniga</option>
+                  <option value="rating">Reyting bo‘yicha</option>
+                  <option value="newest">Yangi mahsulotlar</option>
+                </select>
+                <i class="fa-solid fa-chevron-down select-arrow"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="catalog-layout">
+          
+          <!-- FILTERS SIDEBAR (DESKTOP & MOBILE DRAWER) -->
+          <aside class="filters-sidebar" id="filtersSidebar">
+            <div class="filters-sidebar-header">
+              <h3 class="filters-title"><i class="fa-solid fa-sliders"></i> Filtrlar</h3>
+              <button class="filters-close-btn" id="filtersCloseBtn" aria-label="Filtrni yopish">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+
+            <div class="filters-sidebar-body">
+              <!-- Filter: Category -->
+              <div class="filter-group">
+                <h4 class="filter-group-title">Kategoriya</h4>
+                <div class="filter-options-list" id="categoryFilterList">
+                  <label class="filter-checkbox-label">
+                    <input type="radio" name="categoryFilter" value="all" checked>
+                    <span class="radio-custom"></span>
+                    <span class="label-text">Barcha kategoriyalar</span>
+                  </label>
+                  <label class="filter-checkbox-label">
+                    <input type="radio" name="categoryFilter" value="phones">
+                    <span class="radio-custom"></span>
+                    <span class="label-text">Telefonlar</span>
+                  </label>
+                  <label class="filter-checkbox-label">
+                    <input type="radio" name="categoryFilter" value="laptops">
+                    <span class="radio-custom"></span>
+                    <span class="label-text">Kompyuterlar & Noutbuklar</span>
+                  </label>
+                  <label class="filter-checkbox-label">
+                    <input type="radio" name="categoryFilter" value="audio">
+                    <span class="radio-custom"></span>
+                    <span class="label-text">Quloqchin & Audio</span>
+                  </label>
+                  <label class="filter-checkbox-label">
+                    <input type="radio" name="categoryFilter" value="clothing">
+                    <span class="radio-custom"></span>
+                    <span class="label-text">Kiyim-kechak</span>
+                  </label>
+                  <label class="filter-checkbox-label">
+                    <input type="radio" name="categoryFilter" value="shoes">
+                    <span class="radio-custom"></span>
+                    <span class="label-text">Poyabzal</span>
+                  </label>
+                  <label class="filter-checkbox-label">
+                    <input type="radio" name="categoryFilter" value="home">
+                    <span class="radio-custom"></span>
+                    <span class="label-text">Uy va maishiy texnika</span>
+                  </label>
+                  <label class="filter-checkbox-label">
+                    <input type="radio" name="categoryFilter" value="gaming">
+                    <span class="radio-custom"></span>
+                    <span class="label-text">Gaming & Gadgetlar</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Filter: Price Range -->
+              <div class="filter-group">
+                <h4 class="filter-group-title">Narx (so‘m)</h4>
+                <div class="price-inputs-row">
+                  <div class="price-input-wrap">
+                    <span class="price-input-prefix">dan</span>
+                    <input type="number" id="minPriceInput" placeholder="0" min="0" step="100000">
+                  </div>
+                  <span class="price-separator">—</span>
+                  <div class="price-input-wrap">
+                    <span class="price-input-prefix">gacha</span>
+                    <input type="number" id="maxPriceInput" placeholder="25000000" min="0" step="100000">
+                  </div>
+                </div>
+                <div class="quick-price-chips">
+                  <button type="button" class="price-chip" data-min="0" data-max="1000000">1 mln gacha</button>
+                  <button type="button" class="price-chip" data-min="1000000" data-max="5000000">1 - 5 mln</button>
+                  <button type="button" class="price-chip" data-min="5000000" data-max="15000000">5 - 15 mln</button>
+                </div>
+              </div>
+
+              <!-- Filter: Rating -->
+              <div class="filter-group">
+                <h4 class="filter-group-title">Reyting</h4>
+                <div class="filter-options-list">
+                  <label class="filter-checkbox-label">
+                    <input type="radio" name="ratingFilter" value="0" checked>
+                    <span class="radio-custom"></span>
+                    <span class="label-text">Barcha reytinglar</span>
+                  </label>
+                  <label class="filter-checkbox-label">
+                    <input type="radio" name="ratingFilter" value="4.5">
+                    <span class="radio-custom"></span>
+                    <span class="label-text"><i class="fa-solid fa-star star-filled"></i> 4.5 va yuqori</span>
+                  </label>
+                  <label class="filter-checkbox-label">
+                    <input type="radio" name="ratingFilter" value="4.0">
+                    <span class="radio-custom"></span>
+                    <span class="label-text"><i class="fa-solid fa-star star-filled"></i> 4.0 va yuqori</span>
+                  </label>
+                  <label class="filter-checkbox-label">
+                    <input type="radio" name="ratingFilter" value="3.0">
+                    <span class="radio-custom"></span>
+                    <span class="label-text"><i class="fa-solid fa-star star-filled"></i> 3.0 va yuqori</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Filter: Brands -->
+              <div class="filter-group">
+                <h4 class="filter-group-title">Brendlar</h4>
+                <div class="filter-options-list" id="brandFilterList">
+                  <label class="filter-checkbox-label">
+                    <input type="checkbox" class="brand-checkbox" value="Samsung">
+                    <span class="checkbox-custom"></span>
+                    <span class="label-text">Samsung</span>
+                  </label>
+                  <label class="filter-checkbox-label">
+                    <input type="checkbox" class="brand-checkbox" value="Apple">
+                    <span class="checkbox-custom"></span>
+                    <span class="label-text">Apple</span>
+                  </label>
+                  <label class="filter-checkbox-label">
+                    <input type="checkbox" class="brand-checkbox" value="Xiaomi">
+                    <span class="checkbox-custom"></span>
+                    <span class="label-text">Xiaomi</span>
+                  </label>
+                  <label class="filter-checkbox-label">
+                    <input type="checkbox" class="brand-checkbox" value="Nike">
+                    <span class="checkbox-custom"></span>
+                    <span class="label-text">Nike</span>
+                  </label>
+                  <label class="filter-checkbox-label">
+                    <input type="checkbox" class="brand-checkbox" value="Adidas">
+                    <span class="checkbox-custom"></span>
+                    <span class="label-text">Adidas</span>
+                  </label>
+                  <label class="filter-checkbox-label">
+                    <input type="checkbox" class="brand-checkbox" value="Sony">
+                    <span class="checkbox-custom"></span>
+                    <span class="label-text">Sony</span>
+                  </label>
+                  <label class="filter-checkbox-label">
+                    <input type="checkbox" class="brand-checkbox" value="Lenovo">
+                    <span class="checkbox-custom"></span>
+                    <span class="label-text">Lenovo</span>
+                  </label>
+                  <label class="filter-checkbox-label">
+                    <input type="checkbox" class="brand-checkbox" value="JBL">
+                    <span class="checkbox-custom"></span>
+                    <span class="label-text">JBL</span>
+                  </label>
+                  <label class="filter-checkbox-label">
+                    <input type="checkbox" class="brand-checkbox" value="Philips">
+                    <span class="checkbox-custom"></span>
+                    <span class="label-text">Philips</span>
+                  </label>
+                  <label class="filter-checkbox-label">
+                    <input type="checkbox" class="brand-checkbox" value="Logitech">
+                    <span class="checkbox-custom"></span>
+                    <span class="label-text">Logitech</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="filters-sidebar-footer">
+              <button class="btn btn-primary btn-block" id="applyFiltersBtn">
+                <i class="fa-solid fa-check"></i> Filtrlash
+              </button>
+              <button class="btn btn-outline btn-block" id="resetFiltersBtn">
+                <i class="fa-solid fa-rotate-left"></i> Tozalash
+              </button>
+            </div>
+          </aside>
+
+          <!-- Back-drop for mobile filter drawer -->
+          <div class="drawer-backdrop" id="filterBackdrop"></div>
+
+          <!-- PRODUCTS GRID CONTAINER -->
+          <div class="products-grid-wrapper">
+            
+            <!-- Active filter chips row -->
+            <div class="active-filter-chips" id="activeFilterChips"></div>
+
+            <!-- Product Cards Grid -->
+            <div class="products-grid" id="mainProductsGrid">
+              <!-- Rendered dynamically by script.js -->
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState" style="display: none;">
+              <div class="empty-state-icon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </div>
+              <h3 class="empty-state-title">Mahsulot topilmadi</h3>
+              <p class="empty-state-text">Qidiruv yoki filtrlash parametrlarini o'zgartirib ko'ring yoki filtrlarni tozalang.</p>
+              <button class="btn btn-primary" id="emptyResetBtn">
+                <i class="fa-solid fa-rotate-left"></i> Filtrlarni tozalash
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= RECOMMENDED PRODUCTS SECTION ================= -->
+    <section class="recommended-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <span class="section-subtitle"><i class="fa-solid fa-thumbs-up"></i> Maxsus tanlov</span>
+            <h2 class="section-title">Siz uchun tavsiya qilamiz</h2>
+          </div>
+        </div>
+
+        <div class="products-grid recommended-grid" id="recommendedProductsGrid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FAMOUS BRANDS SECTION ================= -->
+    <section class="brands-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <span class="section-subtitle">Hamkorlar</span>
+            <h2 class="section-title">Mashhur brendlar</h2>
+          </div>
+        </div>
+
+        <div class="brands-grid" id="brandsGrid">
+          <button class="brand-item" data-brand="Samsung">
+            <span class="brand-icon-text">SAMSUNG</span>
+            <small class="brand-sub">Smartfon & Texnika</small>
+          </button>
+          <button class="brand-item" data-brand="Apple">
+            <span class="brand-icon-text"><i class="fa-brands fa-apple"></i> Apple</span>
+            <small class="brand-sub">Premium Gadjetlar</small>
+          </button>
+          <button class="brand-item" data-brand="Xiaomi">
+            <span class="brand-icon-text">mi Xiaomi</span>
+            <small class="brand-sub">Aqlli Texnika</small>
+          </button>
+          <button class="brand-item" data-brand="Nike">
+            <span class="brand-icon-text">NIKE</span>
+            <small class="brand-sub">Sport & Moda</small>
+          </button>
+          <button class="brand-item" data-brand="Adidas">
+            <span class="brand-icon-text">adidas</span>
+            <small class="brand-sub">Sport kiyimlari</small>
+          </button>
+          <button class="brand-item" data-brand="Sony">
+            <span class="brand-icon-text">SONY</span>
+            <small class="brand-sub">Audio & Gaming</small>
+          </button>
+          <button class="brand-item" data-brand="JBL">
+            <span class="brand-icon-text">JBL</span>
+            <small class="brand-sub">Akustika & Ovoz</small>
+          </button>
+          <button class="brand-item" data-brand="Lenovo">
+            <span class="brand-icon-text">Lenovo</span>
+            <small class="brand-sub">Noutbuk & PC</small>
+          </button>
+          <button class="brand-item" data-brand="HP">
+            <span class="brand-icon-text">hp</span>
+            <small class="brand-sub">Biznes noutbuklar</small>
+          </button>
+          <button class="brand-item" data-brand="Logitech">
+            <span class="brand-icon-text">logitech</span>
+            <small class="brand-sub">Gaming & Aksessuar</small>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="main-footer" id="faq">
+    <div class="container footer-container">
+      
+      <div class="footer-grid">
+        <!-- Brand Col -->
+        <div class="footer-col brand-col">
+          <a href="#" class="brand-logo footer-logo">
+            <div class="logo-symbol">
+              <svg viewBox="0 0 42 42" width="34" height="34" fill="none">
+                <rect width="42" height="42" rx="12" fill="url(#footerLogoGrad)" />
+                <path d="M13 16 L13 30 A8 8 0 0 0 29 30 L29 16 Z" stroke="#FFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M17 16 V13 A4 4 0 0 1 25 13 V16" stroke="#FFF" stroke-width="2.8" stroke-linecap="round"/>
+                <circle cx="21" cy="22" r="2.5" fill="#FF4757" />
+                <defs>
+                  <linearGradient id="footerLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#4F46E5" />
+                    <stop offset="100%" stop-color="#8B5CF6" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="logo-text-group">
+              <span class="logo-name">SHOPIX</span>
+              <span class="logo-slogan">MARKETPLACE</span>
+            </div>
+          </a>
+          <p class="footer-about">
+            O‘zbekistondagi eng qulay va ishonchli marketplace platformasi. Biz bilan xarid qilish oson, tez va xavfsiz.
+          </p>
+          <div class="footer-apps">
+            <span class="apps-title">Ilovamizni yuklab oling:</span>
+            <div class="app-badges">
+              <a href="#" class="store-badge"><i class="fa-brands fa-apple"></i> App Store</a>
+              <a href="#" class="store-badge"><i class="fa-brands fa-google-play"></i> Google Play</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 1: Marketplace -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Marketplace</h4>
+          <ul class="footer-links">
+            <li><a href="#">Biz haqimizda</a></li>
+            <li><a href="#">Kontaktlar</a></li>
+            <li><a href="#">Vakansiyalar <span class="hot-badge">Yangi</span></a></li>
+            <li><a href="#">Biznes uchun (Sotuvchi bo'ling)</a></li>
+            <li><a href="#">Blog va yangiliklar</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 2: Buyers -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Xaridorlar uchun</h4>
+          <ul class="footer-links">
+            <li><a href="#">Yetkazib berish shartlari</a></li>
+            <li><a href="#">To‘lov usullari</a></li>
+            <li><a href="#">Mahsulotni qaytarish</a></li>
+            <li><a href="#">Bo‘lib to‘lash (Nasiya)</a></li>
+            <li><a href="#">Kafolat va servis</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Help -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Yordam & Aloqa</h4>
+          <ul class="footer-links">
+            <li><a href="#">Ko‘p beriladigan savollar (FAQ)</a></li>
+            <li><a href="#">24/7 Qo‘llab-quvvatlash</a></li>
+            <li class="footer-contact-item">
+              <i class="fa-solid fa-phone"></i>
+              <div>
+                <strong>+998 71 200-00-00</strong>
+                <small>Har kuni 08:00 - 22:00</small>
+              </div>
+            </li>
+            <li class="footer-contact-item">
+              <i class="fa-solid fa-envelope"></i>
+              <span>info@shopix.uz</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Socials -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Ijtimoiy tarmoqlar</h4>
+          <p class="social-note">Yangiliklar, aksiyalar va chegirmalarni kuzatib boring:</p>
+          <div class="social-links-grid">
+            <a href="#" class="social-link" title="Telegram"><i class="fa-brands fa-telegram"></i></a>
+            <a href="#" class="social-link" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="social-link" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          </div>
+          <div class="payment-systems-list">
+            <span class="pay-badge">Uzcard</span>
+            <span class="pay-badge">Humo</span>
+            <span class="pay-badge">Visa</span>
+            <span class="pay-badge">Mastercard</span>
+            <span class="pay-badge">Payme</span>
+            <span class="pay-badge">Click</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bottom Bar -->
+      <div class="footer-bottom">
+        <p class="copy-text">
+          © 2026 SHOPIX. Barcha huquqlar himoyalangan. Slogan: <em>"Hammasi bir joyda. Xarid qilish oson."</em>
+        </p>
+        <div class="footer-bottom-links">
+          <a href="#">Foydalanish shartlari</a>
+          <a href="#">Maxfiylik siyosati</a>
+          <a href="#">Ommaviy oferta</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ================= MOBILE FIXED BOTTOM NAVIGATION ================= -->
+  <nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="Mobil menyu">
+    <button class="mobile-nav-item active" id="mobHomeBtn">
+      <i class="fa-solid fa-house"></i>
+      <span>Bosh sahifa</span>
+    </button>
+    <button class="mobile-nav-item" id="mobCatalogBtn">
+      <i class="fa-solid fa-layer-group"></i>
+      <span>Katalog</span>
+    </button>
+    <button class="mobile-nav-item" id="mobWishlistBtn">
+      <div class="mob-badge-wrap">
+        <i class="fa-regular fa-heart"></i>
+        <span class="mob-badge" id="mobWishlistBadge">0</span>
+      </div>
+      <span>Sevimlilar</span>
+    </button>
+    <button class="mobile-nav-item" id="mobCartBtn">
+      <div class="mob-badge-wrap">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="mob-badge" id="mobCartBadge">0</span>
+      </div>
+      <span>Savat</span>
+    </button>
+    <button class="mobile-nav-item" id="mobAuthBtn">
+      <i class="fa-regular fa-user" id="mobUserIcon"></i>
+      <span id="mobUserLabel">Profil</span>
+    </button>
+  </nav>
+
+  <!-- ================= CART DRAWER ================= -->
+  <div class="drawer cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Savat">
+    <div class="drawer-header">
+      <div class="drawer-title-wrap">
+        <i class="fa-solid fa-cart-shopping drawer-title-icon"></i>
+        <h3 class="drawer-title">Savat</h3>
+        <span class="drawer-count-badge" id="drawerCartCount">0 ta</span>
+      </div>
+      <button class="drawer-close-btn" id="cartCloseBtn" aria-label="Savatni yopish">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Free Delivery Progress Bar -->
+    <div class="cart-free-delivery-box">
+      <div class="free-delivery-text" id="freeDeliveryText">
+        <i class="fa-solid fa-truck"></i> Toshkent bo'ylab bepul yetkazib berish taqdim etiladi!
+      </div>
+      <div class="free-delivery-progress-track">
+        <div class="free-delivery-progress-bar" style="width: 100%;"></div>
+      </div>
+    </div>
+
+    <div class="drawer-body">
+      <!-- Items List -->
+      <div class="cart-items-list" id="cartItemsList">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Empty Cart State -->
+      <div class="cart-empty-state" id="cartEmptyState" style="display: none;">
+        <div class="empty-cart-icon">
+          <i class="fa-solid fa-cart-arrow-down"></i>
+        </div>
+        <h4>Savatingiz hozircha bo‘sh</h4>
+        <p>Bosh sahifaga o'ting yoki qidiruv orqali kerakli mahsulotlarni toping.</p>
+        <button class="btn btn-primary" id="startShoppingBtn">
+          Xaridni boshlash
+        </button>
+      </div>
+    </div>
+
+    <div class="drawer-footer" id="cartDrawerFooter">
+      <div class="cart-summary-box">
+        <div class="summary-line">
+          <span>Mahsulotlar:</span>
+          <strong id="cartSummaryCount">0 ta</strong>
+        </div>
+        <div class="summary-line">
+          <span>Yetkazib berish:</span>
+          <strong class="text-green">Bepul</strong>
+        </div>
+        <div class="summary-line total-line">
+          <span>Jami to‘lov:</span>
+          <span class="total-price-large" id="cartSummaryTotal">0 so‘m</span>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-block btn-lg" id="checkoutBtn">
+        <i class="fa-solid fa-credit-card"></i> Buyurtma berish
+      </button>
+    </div>
+  </div>
+  <div class="drawer-backdrop" id="cartBackdrop"></div>
+
+  <!-- ================= WISHLIST DRAWER / MODAL ================= -->
+  <div class="drawer wishlist-drawer" id="wishlistDrawer" role="dialog" aria-modal="true" aria-label="Sevimlilar">
+    <div class="drawer-header">
+      <div class="drawer-title-wrap">
+        <i class="fa-solid fa-heart drawer-title-icon text-red"></i>
+        <h3 class="drawer-title">Sevimlilar</h3>
+        <span class="drawer-count-badge" id="drawerWishlistCount">0 ta</span>
+      </div>
+      <button class="drawer-close-btn" id="wishlistCloseBtn" aria-label="Yopish">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="drawer-body">
+      <div class="wishlist-items-list" id="wishlistItemsList">
+        <!-- Rendered by JS -->
+      </div>
+      <div class="wishlist-empty-state" id="wishlistEmptyState" style="display: none;">
+        <div class="empty-cart-icon">
+          <i class="fa-regular fa-heart"></i>
+        </div>
+        <h4>Sevimlilar ro‘yxati bo‘sh</h4>
+        <p>Yoqqan mahsulotlaringizni yurakchani bosib saqlab qo‘ying.</p>
+      </div>
+    </div>
+  </div>
+  <div class="drawer-backdrop" id="wishlistBackdrop"></div>
+
+  <!-- ================= PRODUCT DETAILS MODAL ================= -->
+  <div class="modal product-modal" id="productModal" role="dialog" aria-modal="true" aria-label="Mahsulot tafsilotlari">
+    <div class="modal-dialog product-modal-dialog">
+      <button class="modal-close-btn" id="productModalCloseBtn" aria-label="Yopish">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      
+      <div class="modal-content product-modal-content" id="productModalBody">
+        <!-- Rendered by script.js -->
+      </div>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="productModalBackdrop"></div>
+
+  <!-- ================= AUTH MODAL (LOGIN / REGISTER) ================= -->
+  <div class="modal auth-modal" id="authModal" role="dialog" aria-modal="true" aria-label="Tizimga kirish">
+    <div class="modal-dialog auth-modal-dialog">
+      <button class="modal-close-btn" id="authModalCloseBtn" aria-label="Yopish">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="auth-header">
+        <div class="auth-brand-logo">
+          <i class="fa-solid fa-bag-shopping"></i>
+        </div>
+        <h3 class="auth-title">SHOPIX hisobi</h3>
+        <p class="auth-subtitle">Buyurtmalarni kuzatish va qulay xarid qilish uchun</p>
+      </div>
+
+      <!-- Auth Tabs -->
+      <div class="auth-tabs">
+        <button class="auth-tab-btn active" id="tabLoginBtn">Kirish</button>
+        <button class="auth-tab-btn" id="tabRegisterBtn">Ro‘yxatdan o‘tish</button>
+      </div>
+
+      <div class="auth-forms-container">
+        <!-- LOGIN FORM -->
+        <form class="auth-form" id="loginForm">
+          <div class="form-group">
+            <label for="loginEmail">Email yoki Telefon</label>
+            <div class="input-with-icon">
+              <i class="fa-regular fa-envelope"></i>
+              <input type="text" id="loginEmail" placeholder="example@mail.uz yoki +998" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="label-row">
+              <label for="loginPassword">Parol</label>
+              <a href="#" class="forgot-link" onclick="event.preventDefault(); alert('Parolni tiklash havolasi emailingizga yuborildi!');">Parolni unutdingizmi?</a>
+            </div>
+            <div class="input-with-icon">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" id="loginPassword" placeholder="Parolingizni kiriting" required>
+              <button type="button" class="pwd-toggle-btn" aria-label="Parolni ko'rsatish">
+                <i class="fa-regular fa-eye"></i>
+              </button>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block btn-lg">
+            <i class="fa-solid fa-right-to-bracket"></i> Kirish
+          </button>
+          
+          <div class="auth-divider"><span>yoki tezkor kirish</span></div>
+          <button type="button" class="btn btn-outline btn-block demo-login-btn" id="demoLoginBtn">
+            <i class="fa-solid fa-user-astronaut"></i> Demo hisob bilan kirish (Mehmon)
+          </button>
+        </form>
+
+        <!-- REGISTER FORM -->
+        <form class="auth-form" id="registerForm" style="display: none;">
+          <div class="form-group">
+            <label for="regName">Ism va Familiya</label>
+            <div class="input-with-icon">
+              <i class="fa-regular fa-user"></i>
+              <input type="text" id="regName" placeholder="Aziz Rahimov" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="regEmail">Email manzili</label>
+            <div class="input-with-icon">
+              <i class="fa-regular fa-envelope"></i>
+              <input type="email" id="regEmail" placeholder="aziz@example.uz" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="regPhone">Telefon raqam</label>
+            <div class="input-with-icon">
+              <i class="fa-solid fa-phone"></i>
+              <input type="tel" id="regPhone" placeholder="+998 90 123 45 67" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="regPassword">Parol yarating</label>
+            <div class="input-with-icon">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" id="regPassword" placeholder="Kamida 6 ta belgi" minlength="6" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="regPasswordConfirm">Parolni tasdiqlang</label>
+            <div class="input-with-icon">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" id="regPasswordConfirm" placeholder="Parolni qayta kiriting" required>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block btn-lg">
+            <i class="fa-solid fa-user-plus"></i> Ro‘yxatdan o‘tish
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+  <div class="modal-backdrop" id="authModalBackdrop"></div>
+
+  <!-- ================= CHECKOUT MODAL ================= -->
+  <div class="modal checkout-modal" id="checkoutModal" role="dialog" aria-modal="true" aria-label="Buyurtmani rasmiylashtirish">
+    <div class="modal-dialog checkout-modal-dialog">
+      <button class="modal-close-btn" id="checkoutModalCloseBtn" aria-label="Yopish">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="checkout-header">
+        <h3 class="checkout-title"><i class="fa-solid fa-bag-shopping"></i> Buyurtmani rasmiylashtirish</h3>
+        <p class="checkout-subtitle">Ma'lumotlaringizni to‘ldiring va qulay to‘lov usulini tanlang</p>
+      </div>
+
+      <form class="checkout-form" id="checkoutForm">
+        
+        <div class="checkout-sections-grid">
+          <!-- Step 1: Customer Info -->
+          <div class="checkout-block">
+            <h4 class="checkout-step-title"><span class="step-badge">1</span> Qabul qiluvchi ma'lumotlari</h4>
+            <div class="form-group">
+              <label for="orderName">Ismingiz va Familiyangiz *</label>
+              <input type="text" id="orderName" class="form-control" placeholder="Masalan: Sardor Aliyev" required>
+            </div>
+            <div class="form-group">
+              <label for="orderPhone">Telefon raqamingiz *</label>
+              <input type="tel" id="orderPhone" class="form-control" placeholder="+998 90 123 45 67" required>
+            </div>
+            <div class="form-group">
+              <label for="orderAddress">Yetkazib berish manzili *</label>
+              <textarea id="orderAddress" class="form-control" rows="2" placeholder="Shahar, tuman, ko'cha, uy raqami, xonadon..." required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="orderComment">Kuryer uchun izoh (ixtiyoriy)</label>
+              <input type="text" id="orderComment" class="form-control" placeholder="Podyezd kodi, mo'ljal...">
+            </div>
+          </div>
+
+          <!-- Step 2: Payment Method -->
+          <div class="checkout-block">
+            <h4 class="checkout-step-title"><span class="step-badge">2</span> To‘lov usulini tanlang</h4>
+            
+            <div class="payment-methods-radio-group">
+              <label class="payment-radio-card">
+                <input type="radio" name="paymentMethod" value="card" checked>
+                <div class="payment-card-inner">
+                  <div class="pay-icon"><i class="fa-solid fa-credit-card"></i></div>
+                  <div class="pay-info">
+                    <strong>Bank karta orqali</strong>
+                    <small>Uzcard, Humo, Visa, Mastercard</small>
+                  </div>
+                  <span class="radio-indicator"></span>
+                </div>
+              </label>
+
+              <label class="payment-radio-card">
+                <input type="radio" name="paymentMethod" value="cash">
+                <div class="payment-card-inner">
+                  <div class="pay-icon"><i class="fa-solid fa-money-bill-wave"></i></div>
+                  <div class="pay-info">
+                    <strong>Naqd pul bilan</strong>
+                    <small>Buyurtmani qabul qilganda kuryerga to‘lash</small>
+                  </div>
+                  <span class="radio-indicator"></span>
+                </div>
+              </label>
+
+              <label class="payment-radio-card">
+                <input type="radio" name="paymentMethod" value="online">
+                <div class="payment-card-inner">
+                  <div class="pay-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+                  <div class="pay-info">
+                    <strong>Online to‘lov ilovalari</strong>
+                    <small>Payme, Click, Uzum Bank</small>
+                  </div>
+                  <span class="radio-indicator"></span>
+                </div>
+              </label>
+            </div>
+
+            <!-- Order Total Preview Inside Checkout -->
+            <div class="checkout-order-summary">
+              <div class="order-sum-line">
+                <span>Mahsulotlar:</span>
+                <span id="checkoutItemsCount">0 ta</span>
+              </div>
+              <div class="order-sum-line">
+                <span>Yetkazib berish:</span>
+                <span class="text-green">0 so‘m (Bepul)</span>
+              </div>
+              <div class="order-sum-line grand-total">
+                <span>Jami to‘lov:</span>
+                <strong id="checkoutGrandTotal">0 so‘m</strong>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="checkout-footer">
+          <button type="submit" class="btn btn-primary btn-block btn-lg" id="submitOrderBtn">
+            <i class="fa-solid fa-circle-check"></i> Buyurtmani tasdiqlash
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="checkoutModalBackdrop"></div>
+
+  <!-- ================= SUCCESS ORDER CONFIRMATION MODAL ================= -->
+  <div class="modal success-modal" id="orderSuccessModal" role="dialog" aria-modal="true">
+    <div class="modal-dialog success-dialog">
+      <div class="success-icon-wrap">
+        <i class="fa-solid fa-check"></i>
+      </div>
+      <h3 class="success-title">Buyurtmangiz muvaffaqiyatli qabul qilindi!</h3>
+      <p class="success-order-id">Buyurtma raqami: <strong id="successOrderNum">#SPX-98214</strong></p>
+      <p class="success-desc">
+        Kuryerimiz tez orada siz bilan bog‘lanadi. Buyurtmangiz Toshkent bo'ylab 24 soat ichida yetkaziladi.
+      </p>
+      <button class="btn btn-primary btn-block btn-lg" id="successCloseBtn">
+        Xaridni davom ettirish
+      </button>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="orderSuccessBackdrop"></div>
+
+  <!-- ================= LOCATION PICKER MODAL ================= -->
+  <div class="modal location-modal" id="locationModal" role="dialog" aria-modal="true" aria-label="Shahar tanlash">
+    <div class="modal-dialog location-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="fa-solid fa-location-dot"></i> Shahringizni tanlang</h3>
+        <button class="modal-close-btn" id="locationModalCloseBtn" aria-label="Yopish">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <p class="location-modal-sub">Yetkazib berish muddatlari va narxlari shahringizga qarab belgilanadi:</p>
+      <div class="cities-grid" id="citiesGrid">
+        <button class="city-btn active" data-city="Toshkent">Toshkent</button>
+        <button class="city-btn" data-city="Samarqand">Samarqand</button>
+        <button class="city-btn" data-city="Buxoro">Buxoro</button>
+        <button class="city-btn" data-city="Andijon">Andijon</button>
+        <button class="city-btn" data-city="Farg‘ona">Farg‘ona</button>
+        <button class="city-btn" data-city="Namangan">Namangan</button>
+        <button class="city-btn" data-city="Qarshi">Qarshi</button>
+        <button class="city-btn" data-city="Navoiy">Navoiy</button>
+        <button class="city-btn" data-city="Urganch">Urganch</button>
+        <button class="city-btn" data-city="Nukus">Nukus</button>
+        <button class="city-btn" data-city="Jizzax">Jizzax</button>
+        <button class="city-btn" data-city="Termiz">Termiz</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="locationModalBackdrop"></div>
+
+  <!-- ================= FULL CATALOG OVERLAY MODAL ================= -->
+  <div class="catalog-modal-overlay" id="catalogModal" role="dialog" aria-modal="true" aria-label="Katalog">
+    <div class="catalog-modal-container">
+      <div class="catalog-modal-header">
+        <div class="cat-logo-title">
+          <i class="fa-solid fa-layer-group text-primary"></i>
+          <h3>Katalog bo‘limlari</h3>
+        </div>
+        <button class="catalog-modal-close" id="catalogModalCloseBtn" aria-label="Katalogni yopish">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="catalog-modal-grid">
+        <div class="catalog-modal-item" data-category="phones">
+          <div class="cat-item-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+          <div class="cat-item-info">
+            <h4>Telefonlar va gadjetlar</h4>
+            <p>Smartfonlar, planshetlar, g‘iloflar, quvvatlagichlar</p>
+          </div>
+        </div>
+        <div class="catalog-modal-item" data-category="laptops">
+          <div class="cat-item-icon"><i class="fa-solid fa-laptop"></i></div>
+          <div class="cat-item-info">
+            <h4>Kompyuterlar va Noutbuklar</h4>
+            <p>Ultrabuklar, gaming noutbuklar, monitorlar, klaviaturalar</p>
+          </div>
+        </div>
+        <div class="catalog-modal-item" data-category="audio">
+          <div class="cat-item-icon"><i class="fa-solid fa-headphones"></i></div>
+          <div class="cat-item-info">
+            <h4>Audio va Quloqchinlar</h4>
+            <p>Simsiz quloqchinlar, portativ kolonka, akustika</p>
+          </div>
+        </div>
+        <div class="catalog-modal-item" data-category="clothing">
+          <div class="cat-item-icon"><i class="fa-solid fa-shirt"></i></div>
+          <div class="cat-item-info">
+            <h4>Kiyim-kechak</h4>
+            <p>Erkaklar, ayollar va bolalar uchun zamonaviy kiyimlar</p>
+          </div>
+        </div>
+        <div class="catalog-modal-item" data-category="shoes">
+          <div class="cat-item-icon"><i class="fa-solid fa-shoe-prints"></i></div>
+          <div class="cat-item-info">
+            <h4>Poyabzallar</h4>
+            <p>Krossovkalar, tufli, etiklar, sport poyabzallari</p>
+          </div>
+        </div>
+        <div class="catalog-modal-item" data-category="home">
+          <div class="cat-item-icon"><i class="fa-solid fa-couch"></i></div>
+          <div class="cat-item-info">
+            <h4>Uy va oshxona</h4>
+            <p>Mebel, qulaylik buyumlari, tozalash vositalari</p>
+          </div>
+        </div>
+        <div class="catalog-modal-item" data-category="appliances">
+          <div class="cat-item-icon"><i class="fa-solid fa-blender"></i></div>
+          <div class="cat-item-info">
+            <h4>Maishiy texnika</h4>
+            <p>Muzlatgich, changyutgich, kofe mashinalari</p>
+          </div>
+        </div>
+        <div class="catalog-modal-item" data-category="gaming">
+          <div class="cat-item-icon"><i class="fa-solid fa-gamepad"></i></div>
+          <div class="cat-item-info">
+            <h4>Gaming & O‘yinlar</h4>
+            <p>PlayStation, geympadlar, o‘yin kreslolari</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= TOAST NOTIFICATION CONTAINER ================= -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
